@@ -7,6 +7,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { KitchenComponent } from './kitchen.component';
+import { KitchenPipe } from './pipes/kitchen.pipe';
+import { CardComponent } from './card/card.component';
 
 
 
@@ -15,6 +17,8 @@ import { KitchenComponent } from './kitchen.component';
     OrdersComponent,
     NavBarChefComponent,
     KitchenComponent,
+    KitchenPipe,
+    CardComponent,
   ],
   imports: [
     CommonModule,

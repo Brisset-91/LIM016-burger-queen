@@ -21,8 +21,8 @@ export class FirestoreService {
     return this.firestore.collection('orders').snapshotChanges();
   }
 
-  updateStatus(id:string){
-    return this.firestore.collection('orders').doc(id).update({status:"listo"})
+  updateStatus(id:string, startTime:any){
+    return this.firestore.collection('orders').doc(id).update({status:"listo",time:'startTime'})
   }
 
 }

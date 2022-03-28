@@ -1,0 +1,13 @@
+<div class="button-take-orders" >
+    <ul>
+      <li>Tiempo: {{time }} </li>
+    </ul>
+    <select class="form-select form-select-sm"  (change)="orderStatus($event)" >
+      <option value="new" selected>Nuevo</option>
+      <option value="acepted">Aceptado</option>
+      <option value="ready">Listo</option>
+    </select>
+    <!--
+    <button class="btn-take-order" name="{{detail.id}}" value="aceptar" (click)="orderStatus($event)" >Aceptar</button>
+    <button class="btn-delete" name="{{detail.id}}" value="terminado" (click)="orderStatus($event)" >Terminado</button>-->
+</div>

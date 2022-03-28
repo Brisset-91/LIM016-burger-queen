@@ -15,6 +15,12 @@ width: auto;">
     <div *ngFor="let datas of detail.data.date">
       <p>Fecha: {{datas.monthDateYear}}</p>
       <p>Hora: {{datas.hourMinutes}}</p>
+      <ul>
+        <li>Tiempo: </li>
+      </ul>
+      <ul>
+        <li>Tiempo: {{today | kitchen }} </li>
+      </ul>
     </div>
   </div>
   <div class="tables-products">
@@ -33,19 +39,10 @@ width: auto;">
       </tbody>
     </table>
   </div>
-  <div class="button-take-orders">
-    <button class="btn-take-order">Tomar Pedido</button>
-    <button class="btn-delete">Eliminar Pedido</button>
-  </div>
+  <app-card></app-card>
+
 </div>
 
-  <!--<div class="card-body">
-  <select class="form-select form-select-sm" (change)="orderStatus($event)" >
-    <option value="new" selected>Nuevo</option>
-    <option value="acepted">Aceptado</option>
-    <option value="ready">Listo</option>
-  </select>
-</div>-->
 </section>
 
 

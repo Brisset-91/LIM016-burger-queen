@@ -42,8 +42,8 @@ export class CardsOrderComponent implements OnInit {
     
     if($event.target.value == 'accepted'){
       console.log('value',$event.target.value);
+      this.start($event.target.value)
       this.startTime = Date.now();
-      this.start()
       console.log(this.time)
     
       this.orderStatusChange = "accepted"
@@ -55,17 +55,15 @@ export class CardsOrderComponent implements OnInit {
       this.pause()
       console.log(this.time)
     
-      this.orderStatusChange = "Ready to delivere."
+      this.orderStatusChange = "ready"
       
-      this.firestoreService.updateStatus(this.detail.id,"listo", this.startTime )
+      this.firestoreService.updateStatus(this.detail.id,"ready", this.startTime )
       //? Guardar date en documento de la colección
     } 
   }
 
-  start(){
+  start(time: number){
    
-    const btn = document.querySelectorAll('select');
-    console.log(btn)
     console.log(this.startTime);
  
     this.timeInterval = setInterval(() => {

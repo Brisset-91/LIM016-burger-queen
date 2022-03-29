@@ -17,8 +17,9 @@ export class Orders {
     this.date = date;
     this.total = total;
     this.status = status;
-    this.startTime = startTime
+    this.startTime = startTime;
     this.readyTime = readyTime
+
   }
 }
 

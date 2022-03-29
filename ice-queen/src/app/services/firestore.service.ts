@@ -15,13 +15,13 @@ export class FirestoreService {
   sendOrdeFireStore(order: Orders): Promise<DocumentReference<any>> {
     return this.firestore.collection('orders').add(
       {
-        clientName: order.clientName, 
-        table: order.table, 
-        total: order.total, 
-        status: order.status, 
+        clientName: order.clientName,
+        table: order.table,
+        total: order.total,
+        status: order.status,
         products: JSON.parse(JSON.stringify(order.products)),
         date: JSON.parse(JSON.stringify(order.date)),
-        startTime: order.readyTime,       
+        startTime: order.readyTime,
       });
   }
 
@@ -29,38 +29,49 @@ export class FirestoreService {
     return this.firestore.collection('orders').snapshotChanges();
   }
 
-  updateStatus(id:string, status:string, startTime: number ){
-    return this.firestore.collection('orders').doc(id).update({ 
-      status: status, 
-      startTime : startTime 
-    }) 
+  updateStatus(id:string, startTime: number ){
+    try{
+        this.firestore.collection('orders').doc(id).update({
+        startTime : startTime
+      })
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+
+  sendReadyTime(id:string, readyTime:string) {
+    return this.firestore.collection('orders').doc(id).update({
+      readyTime: readyTime,
+    })
   }
 
    //actualiza estado pedido actual
    public updateStatusCurrentOrder(id: any) {
     try{
-      this.firestore.collection('orders').doc(id).update({status:"En preparación"});
+      this.firestore.collection('orders').doc(id).update({status:"preparacion"});
     } catch(err){
       console.log(err)
     }
-    console.log(id)
   }
 
   public updateStatusGiveOrder(id: any) {
     try{
-      this.firestore.collection('orders').doc(id).update({status:"Listo para entregar"});
+      this.firestore.collection('orders').doc(id).update({status:"listo"});
     } catch(err){
       console.log(err)
     }
-    console.log(id)
   }
 
-/*   public getOrdersByStatus() {
-     const q =  this.firestore.collection('orders', (ref) => ref.where('status', '==', 'En preparación' && 'Pendiente')).valueChanges();
-      const querySnapshot =  getDocs(q);
-      querySnapshot.forEach((doc:any) => {
-      console.log(doc.id, '=>', doc.data)
-    })
-  }*/
+  public updateStatusDeliveryOrder(id: any) {
+    try{
+      this.firestore.collection('orders').doc(id).update({status:"entregado"});
+    } catch(err){
+      console.log(err)
+    }
+  }
 
+  public delete(id: string) {
+     this.firestore.collection('orders').doc(id).delete();
+  }
 }

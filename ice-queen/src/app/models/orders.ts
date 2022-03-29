@@ -8,7 +8,7 @@ export class Orders {
   total?: number;
   status: string;
   startTime?: number;
-  readyTime?: string; 
+  readyTime?: string;
 
   constructor(clientName: string, table: string, products: Array<Product>, date: Array<OrderDate>, total: number, status:string, startTime: number, readyTime: string) {
     this.clientName= clientName;
@@ -51,5 +51,7 @@ export interface DataUpdate {
     date: Array<OrderDate>;
     total?: number;
     status: string;
+    startTime?: number;
+    readyTime?: string;
   }
 }
